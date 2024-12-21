@@ -1,0 +1,47 @@
+site_name: MCP 100 ideas
+copyright: "&copy; 2024 po-shu"
+extra:
+  generator: true
+  social:
+    - icon: material/information
+      link: https://note.com/poshu_pushuray
+      name: note
+    - icon: simple/github
+      link: https://github.com/po-shu/mcp-100-ideas
+      name: github-pages-repository
+extra_css:
+  - assets/stylesheets/extra.css
+hooks:
+  - mcp-100-ideas/hooks_hide_toc.py
+plugins:
+  - search:
+theme:
+  font:
+    text: "Noto Serif JP"
+  icon:
+    logo: material/book-open-page-variant
+  locale: ja
+  name: material
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.snippets:
+      base_path: docs/

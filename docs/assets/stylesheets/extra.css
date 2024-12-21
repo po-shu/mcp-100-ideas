@@ -1,0 +1,83 @@
+[data-md-color-scheme="default"] {
+    --anthropic-primary: rgb(14, 14, 14);
+    --anthropic-primary-light: rgb(212, 162, 127);
+    --anthropic-background-light: rgb(253, 253, 247);
+    --anthropic-gray-400: rgb(158, 158, 158);
+    --anthropic-gray-700: rgb(62, 62, 62);
+
+    /* header-title */
+    --md-primary-bg-color: var(--anthropic-primary);
+    /* header-search-placeholder */
+    --md-primary-bg-color--light: var(--anthropic-gray-400);
+
+    --md-default-bg-color: var(--anthropic-background-light);
+
+    /* link-active */
+    --md-primary-fg-color: var(--anthropic-primary-light);
+
+    /* hover */
+    --md-accent-fg-color: var(--anthropic-primary);
+
+    --md-typeset-color: var(--anthropic-gray-700);
+    --md-default-fg-color--light: var(--anthropic-primary);
+
+    --md-footer-fg-color: var(--anthropic-primary);
+    --md-footer-fg-color--light: var(--anthropic-primary);
+    --md-footer-fg-color--lighter: var(--anthropic-primary);
+    --md-footer-bg-color: var(--anthropic-background-light);
+    --md-footer-bg-color--dark: var(--anthropic-background-light);
+}
+
+[data-md-color-scheme="default"] .md-header {
+    --md-primary-fg-color: var(--anthropic-background-light);
+}
+
+[data-md-color-scheme="default"] .md-search__form {
+    background-color: var(--anthropic-background-light);
+}
+
+[data-md-color-scheme="slate"] {
+    --anthropic-primary: rgb(222, 222, 222);
+    --anthropic-primary-light: rgb(212, 162, 127);
+    --anthropic-background-light: rgb(9, 9, 11);
+    --anthropic-gray-400: rgb(222, 222, 222);
+    --anthropic-gray-700: rgb(158, 158, 158);
+
+    /* header-title */
+    --md-primary-bg-color: var(--anthropic-primary);
+    /* header-search-placeholder */
+    --md-primary-bg-color--light: var(--anthropic-gray-400);
+
+    --md-default-bg-color: var(--anthropic-background-light);
+
+    /* link-active */
+    --md-primary-fg-color: var(--anthropic-primary-light);
+
+    /* hover */
+    --md-accent-fg-color: var(--anthropic-primary);
+
+    --md-typeset-color: var(--anthropic-gray-700);
+    --md-default-fg-color--light: var(--anthropic-primary);
+
+    --md-footer-fg-color: var(--anthropic-primary);
+    --md-footer-fg-color--light: var(--anthropic-primary);
+    --md-footer-fg-color--lighter: var(--anthropic-primary);
+    --md-footer-bg-color: var(--anthropic-background-light);
+    --md-footer-bg-color--dark: var(--anthropic-background-light);
+}
+
+[data-md-color-scheme="slate"] .md-header {
+    --md-primary-fg-color: var(--anthropic-background-light);
+}
+
+[data-md-color-scheme="slate"] .md-search__form {
+    background-color: var(--anthropic-background-light);
+}
+
+[data-md-color-scheme=slate][data-md-color-primary=indigo] {
+    --md-typeset-a-color: var(--anthropic-primary-light);
+}
+
+iframe {
+    border: 0
+}
