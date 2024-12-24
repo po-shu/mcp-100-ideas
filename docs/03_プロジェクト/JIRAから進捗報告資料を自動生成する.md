@@ -15,7 +15,6 @@ JIRAのチケット情報を基に、プロジェクトの進捗報告資料（�
 | Client | Claude Desktop App | 進捗報告資料の作成支援 |
 | Server | JIRA (要自作) | プロジェクトのタスク・課題管理情報の提供 |
 | Server | GitHub | 実装の詳細な進捗情報の提供 |
-| Server | Slack | 議事録やコミュニケーションログの参照 |
 
 ```mermaid
 sequenceDiagram
@@ -23,7 +22,6 @@ sequenceDiagram
     participant Claude as Claude Desktop
     participant JIRA as JIRA
     participant GH as GitHub
-    participant Slack as Slack
 
     PM->>Claude: 進捗報告資料の作成を依頼
     Claude->>JIRA: スプリントの状況を確認
@@ -32,16 +30,13 @@ sequenceDiagram
     Claude->>GH: コミット履歴、PRの状況を確認
     GH-->>Claude: 開発進捗情報を返却
     
-    Claude->>Slack: チーム間の議論を確認
-    Slack-->>Claude: コミュニケーションログを返却
-    
     Claude-->>PM: 1次レポート案を提示
     PM->>Claude: 特定の課題について詳細確認を依頼
     
     Claude->>JIRA: 課題の詳細履歴を確認
-    JIRA-->>Claude: ステータス変更履歴を返却
-    Claude->>Slack: 関連する議論を検索
-    Slack-->>Claude: 関連メッセージを返却
+    JIRA-->>Claude: ステータス変更履歴とコメントを返却
+    Claude->>GH: 関連するPR/コミットを検索
+    GH-->>Claude: 実装の詳細情報を返却
     
     Claude-->>PM: 詳細分析を提示
     PM->>Claude: 報告資料の最終調整を依頼
@@ -56,11 +51,11 @@ sequenceDiagram
 - 定型的な資料作成作業を自動化し、PMが本質的な分析に時間を使える
 
 ### 価値を妨げる課題は何か
-1. 複数システムに分散した情報の収集と整理に時間がかかる<br>
+1. システムごとに異なる形式のデータを整理・統合する手間<br>
 2. データの解釈や課題の優先順位付けに主観が入りやすい<br>
 3. チーム間の依存関係や影響範囲の分析が複雑
 
 ### なぜ課題が発生するのか、仮説推論
-1. プロジェクト管理ツール、コミュニケーションツール、ソース管理が別々のシステムで運用されている<br>
-2. 数値データとコミュニケーションログの統合分析が手作業で行われている<br>
+1. 課題管理とソース管理が異なるシステムで運用されている<br>
+2. JIRAとGitHubの関連付けが手作業で行われている<br>
 3. プロジェクトの規模が大きくなるほど、全体像の把握が困難になる

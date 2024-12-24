@@ -6,4 +6,4 @@
 --8<-- "assets/html/cosmic-svg.html"
 
 - 記事はこちら
-    - note: [Claude × MCP と、MCPのユースケースを100個考える](https://note.com/poshu_pushuray/n/n2db15b6dfbc1)
+    - note: [Claude × MCP と、MCPのユースケースを考える](https://note.com/poshu_pushuray/n/n2db15b6dfbc1)
