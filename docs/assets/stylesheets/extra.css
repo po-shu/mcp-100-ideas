@@ -81,3 +81,7 @@
 iframe {
     border: 0
 }
+
+.md-header--shadow {
+    box-shadow: 0 0 .01rem #0000001a, 0 .01rem .05rem #0003;
+}
