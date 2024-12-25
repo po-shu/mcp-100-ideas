@@ -11,19 +11,19 @@
 | Type | Name | Role |
 |--|--|--|
 | Client | Claude Desktop App | クリエイターとの対話、投稿設定の最適化支援 |
-| Server | Memory | プラットフォームごとの設定履歴や最適化ルールの保存 |
 | Server | Social Media API Server（要新規開発） | X API、Instagram API、YouTube Data APIなどを統合し、各SNSプラットフォームとの連携を実現 |
+| Server | Filesystem | プラットフォームごとの設定履歴や最適化ルールの保存 |
 
 ```mermaid
 sequenceDiagram
     actor User as クリエイター
     participant Claude as Claude Desktop App
-    participant Memory as Memory Server
+    participant FS as Filesystem
     participant Social as Social Media API Server
     
     User->>Claude: コンテンツ投稿の最適化を依頼
-    Claude->>Memory: 過去の設定履歴を要求
-    Memory-->>Claude: 設定履歴を返却
+    Claude->>FS: 過去の設定履歴を参照
+    FS-->>Claude: 設定履歴を返却
     
     Claude->>User: 各プラットフォームの推奨設定を提案
     User->>Claude: 設定内容を確認・調整
@@ -31,8 +31,8 @@ sequenceDiagram
     Claude->>Social: プラットフォームごとの設定を適用
     Social-->>Claude: 設定適用結果
     
-    Claude->>Memory: 新しい設定を保存
-    Memory-->>Claude: 保存完了
+    Claude->>FS: 新しい設定を保存
+    FS-->>Claude: 保存完了
     
     Claude-->>User: 設定完了を報告
 ```
