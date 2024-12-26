@@ -10,25 +10,25 @@ Tableauを活用した業績予測において、予測モデルのパラメー�
 | Type | Name | Role |
 |--|--|--|
 | Client | Claude Desktop App | 予測モデル改善の対話型支援 |
-| Server | Tableau MCP Server [要自作] | Tableauとの双方向データ連携 |
-| Server | Memory | 予測モデル調整履歴の保持 |
-| Server | Brave Search | 外部要因データの収集 |
+| Server | Tableau MCP Server [要自作] | TableauのREST APIを利用した設定値の取得・更新 |
+| Server | PostgreSQL | モデル調整履歴とその効果の記録 |
+| Server | Fetch | 外部要因データの構造化収集 |
 
 ```mermaid
 sequenceDiagram
     actor User as アナリスト
     participant CAP as Claude Desktop App
     participant TBL as Tableau MCP Server
-    participant MEM as Memory
-    participant BRV as Brave Search
+    participant DB as PostgreSQL
+    participant FTC as Fetch
     
     User->>CAP: 予測モデルの改善を依頼
     CAP->>TBL: 現在の設定を取得
     TBL-->>CAP: 設定情報を返却
-    CAP->>MEM: 過去の調整履歴を確認
-    MEM-->>CAP: 関連する調整履歴を返却
-    CAP->>BRV: 関連する外部要因を検索
-    BRV-->>CAP: 市場動向データを返却
+    CAP->>DB: 過去の調整履歴を確認
+    DB-->>CAP: 類似条件での履歴を返却
+    CAP->>FTC: 関連する外部要因を収集
+    FTC-->>CAP: 構造化された市場データを返却
     CAP-->>User: モデル調整案を提示
     User->>CAP: 調整案の承認
     CAP->>TBL: モデルパラメータを更新
@@ -36,8 +36,8 @@ sequenceDiagram
     User->>CAP: 予測精度の検証を依頼
     CAP->>TBL: 予測と実績の差異を分析
     TBL-->>CAP: 分析結果を返却
-    CAP->>MEM: 調整結果を記録
-    MEM-->>CAP: 記録完了を通知
+    CAP->>DB: 調整結果を記録
+    DB-->>CAP: 記録完了を通知
     CAP-->>User: 改善提案を提示
 ```
 
