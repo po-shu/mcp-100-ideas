@@ -1,0 +1,1861 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../01_%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0/%E9%9A%9C%E5%AE%B3%E5%AF%BE%E5%BF%9C%E5%B1%A5%E6%AD%B4%E3%81%AE%E6%B4%BB%E7%94%A8%E3%82%92%E6%9C%80%E9%81%A9%E5%8C%96%E3%81%99%E3%82%8B/">
+      
+      
+        <link rel="next" href="../%E3%82%A4%E3%83%B3%E3%82%B7%E3%83%87%E3%83%B3%E3%83%88%E5%AF%BE%E5%BF%9C%E3%81%AE%E6%84%8F%E6%80%9D%E6%B1%BA%E5%AE%9A%E3%82%92%E6%94%AF%E6%8F%B4%E3%81%99%E3%82%8B/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>JIRAから進捗報告資料を自動生成する - MCP 100 ideas</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+JP:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif JP";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#jira" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MCP 100 ideas" class="md-header__button md-logo" aria-label="MCP 100 ideas" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MCP 100 ideas
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              JIRAから進捗報告資料を自動生成する
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MCP 100 ideas" class="md-nav__button md-logo" aria-label="MCP 100 ideas" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    MCP 100 ideas
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Claude × MCPと、MCPのユースケースを100個考える(途中)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    01 エンジニアリング
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            01 エンジニアリング
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0/%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B3%E3%82%B9%E3%83%88%E3%81%AE%E5%88%86%E6%9E%90%E3%82%92%E8%87%AA%E5%8B%95%E5%8C%96%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クラウドコストの分析を自動化する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0/%E3%83%81%E3%83%BC%E3%83%A0%E5%85%A8%E4%BD%93%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92%E6%9C%80%E9%81%A9%E5%8C%96%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    チーム全体の開発環境を最適化する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0/%E3%83%86%E3%82%B9%E3%83%88%E8%87%AA%E5%8B%95%E5%8C%96%E3%81%AE%E8%A8%BA%E6%96%AD%E3%82%92%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    テスト自動化の診断をする
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0/%E3%83%8A%E3%83%AC%E3%83%83%E3%82%B8%E3%83%99%E3%83%BC%E3%82%B9%E3%82%92%E7%B6%99%E7%B6%9A%E7%9A%84%E3%81%AB%E9%80%B2%E5%8C%96%E3%81%95%E3%81%9B%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ナレッジベースを継続的に進化させる
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0/%E6%9C%AC%E7%95%AA%E3%83%87%E3%83%BC%E3%82%BF%E3%81%8B%E3%82%89%E3%83%86%E3%82%B9%E3%83%88%E3%82%92%E8%87%AA%E5%8B%95%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    本番データからテストを自動生成する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0/%E9%96%8B%E7%99%BA%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%82%92%E8%87%AA%E5%8B%95%E3%81%A7%E5%8F%AF%E8%A6%96%E5%8C%96%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    開発プロセスを自動で可視化する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0/%E9%9A%9C%E5%AE%B3%E5%AF%BE%E5%BF%9C%E5%B1%A5%E6%AD%B4%E3%81%AE%E6%B4%BB%E7%94%A8%E3%82%92%E6%9C%80%E9%81%A9%E5%8C%96%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    障害対応履歴の活用を最適化する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    02 プロジェクト
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            02 プロジェクト
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    JIRAから進捗報告資料を自動生成する
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    JIRAから進捗報告資料を自動生成する
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      アイデア
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="アイデア">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      アーキテクチャ
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      思考プロセス
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="思考プロセス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      対象の活動の価値は何か
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      価値を妨げる課題は何か
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      なぜ課題が発生するのか、仮説推論
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      レポート出力の柔軟性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%82%A4%E3%83%B3%E3%82%B7%E3%83%87%E3%83%B3%E3%83%88%E5%AF%BE%E5%BF%9C%E3%81%AE%E6%84%8F%E6%80%9D%E6%B1%BA%E5%AE%9A%E3%82%92%E6%94%AF%E6%8F%B4%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    インシデント対応の意思決定を支援する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E5%B7%A5%E6%95%B0%E8%A6%8B%E7%A9%8D%E3%82%82%E3%82%8A%E3%82%92%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%8C%96%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    プロジェクト工数見積もりを高精度化する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%83%AA%E3%82%B9%E3%82%AF%E3%82%A2%E3%82%BB%E3%82%B9%E3%83%A1%E3%83%B3%E3%83%88%E3%82%92%E9%AB%98%E5%BA%A6%E5%8C%96%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    リスクアセスメントを高度化する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%A5%91%E7%B4%84%E6%9B%B8%E3%81%AE%E6%B3%95%E5%8B%99%E7%A2%BA%E8%AA%8D%E6%A5%AD%E5%8B%99%E3%82%92%E5%8A%B9%E7%8E%87%E5%8C%96%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    契約書の法務確認業務を効率化する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%A8%AD%E8%A8%88%E6%9B%B8%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E3%82%92%E5%8A%B9%E7%8E%87%E5%8C%96%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    設計書レビューを効率化する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    03 趣味・余暇
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            03 趣味・余暇
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B6%A3%E5%91%B3%E3%83%BB%E4%BD%99%E6%9A%87/%E3%82%B2%E3%83%BC%E3%83%A0%E6%94%BB%E7%95%A5%E3%81%AE%E4%BA%88%E5%AE%9A%E3%82%92%E6%A5%BD%E3%81%97%E3%81%8F%E5%85%B1%E6%9C%89%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ゲーム攻略の予定を楽しく共有する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B6%A3%E5%91%B3%E3%83%BB%E4%BD%99%E6%9A%87/%E3%82%B9%E3%82%AF%E3%83%A9%E3%83%83%E3%83%97%E3%82%92%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AA%E3%83%BC%E3%81%AB%E5%A4%89%E6%8F%9B%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    スクラップをストーリーに変換する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B6%A3%E5%91%B3%E3%83%BB%E4%BD%99%E6%9A%87/%E3%83%89%E3%83%AD%E3%83%BC%E3%83%B3%E7%A9%BA%E6%92%AE%E3%81%AE%E8%A8%88%E7%94%BB%E3%82%92%E6%9C%80%E9%81%A9%E5%8C%96%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ドローン空撮の計画を最適化する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B6%A3%E5%91%B3%E3%83%BB%E4%BD%99%E6%9A%87/%E5%8B%95%E7%94%BB%E3%81%AE%E9%87%8D%E8%A6%81%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%82%92%E6%8A%8A%E6%8F%A1%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    動画の重要ポイントを把握する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_%E8%B6%A3%E5%91%B3%E3%83%BB%E4%BD%99%E6%9A%87/%E5%AE%B6%E6%97%8F%E6%97%85%E8%A1%8C%E3%81%AE%E4%BA%88%E5%AE%9A%E8%AA%BF%E6%95%B4%E3%82%92%E6%9C%80%E9%81%A9%E5%8C%96%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    家族旅行の予定調整を最適化する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    04 生活
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            04 生活
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_%E7%94%9F%E6%B4%BB/%E3%83%87%E3%82%B8%E3%82%BF%E3%83%AB%E9%A0%98%E5%8F%8E%E6%9B%B8%E3%81%8B%E3%82%89%E7%B5%8C%E8%B2%BB%E3%82%92%E8%87%AA%E5%8B%95%E7%99%BB%E9%8C%B2%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    デジタル領収書から経費を自動登録する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_%E7%94%9F%E6%B4%BB/%E5%85%89%E7%86%B1%E8%B2%BBCSV%E3%81%8B%E3%82%89%E5%82%BE%E5%90%91%E3%82%92%E5%88%86%E6%9E%90%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    光熱費CSVから傾向を分析する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_%E7%94%9F%E6%B4%BB/%E5%AE%A4%E6%B8%A9%E7%AE%A1%E7%90%86%E3%81%A7%E5%BF%AB%E9%81%A9%E3%81%A8%E5%81%A5%E5%BA%B7%E3%82%92%E5%AE%9F%E7%8F%BE%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    室温管理で快適と健康を実現する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_%E7%94%9F%E6%B4%BB/%E8%B3%BC%E5%85%A5%E5%B1%A5%E6%AD%B4%E3%81%A7%E8%B3%A2%E3%81%84%E9%A3%9F%E6%9D%90%E9%81%B8%E3%81%B3%E3%82%92%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    購入履歴で賢い食材選びをする
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    05 SNS発信
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            05 SNS発信
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_SNS%E7%99%BA%E4%BF%A1/%E5%8B%95%E7%94%BB%E7%B7%A8%E9%9B%86%E3%81%AE%E4%BD%9C%E6%A5%AD%E5%8A%B9%E7%8E%87%E3%82%92%E6%94%B9%E5%96%84%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    動画編集の作業効率を改善する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_SNS%E7%99%BA%E4%BF%A1/%E8%91%97%E4%BD%9C%E6%A8%A9%E6%83%85%E5%A0%B1%E3%82%92%E5%8A%B9%E7%8E%87%E7%9A%84%E3%81%AB%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    著作権情報を効率的に確認する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_SNS%E7%99%BA%E4%BF%A1/%E8%A4%87%E6%95%B0SNS%E3%81%AE%E6%8A%95%E7%A8%BF%E8%A8%AD%E5%AE%9A%E3%82%92%E6%9C%80%E9%81%A9%E5%8C%96%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    複数SNSの投稿設定を最適化する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_SNS%E7%99%BA%E4%BF%A1/%E8%A4%87%E6%95%B0%E5%AA%92%E4%BD%93%E3%81%AE%E5%8F%8E%E7%9B%8A%E3%82%92%E4%B8%80%E5%85%83%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    複数媒体の収益を一元管理する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    06 キャリア・学習
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            06 キャリア・学習
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2%E3%83%BB%E5%AD%A6%E7%BF%92/%E4%BA%8B%E6%A5%AD%E8%A8%88%E7%94%BB%E3%82%92%E5%AE%9F%E8%B7%B5%E7%9A%84%E3%81%AA%E3%82%BF%E3%82%B9%E3%82%AF%E3%81%AB%E5%A4%89%E6%8F%9B%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    事業計画を実践的なタスクに変換する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2%E3%83%BB%E5%AD%A6%E7%BF%92/%E4%BC%81%E6%A5%AD%E5%88%86%E6%9E%90%E3%82%92%E9%9D%A2%E6%8E%A5%E6%BA%96%E5%82%99%E3%81%AB%E4%BD%93%E7%B3%BB%E5%8C%96%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    企業分析を面接準備に体系化する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2%E3%83%BB%E5%AD%A6%E7%BF%92/%E5%AD%A6%E7%BF%92%E8%A8%88%E7%94%BB%E3%81%A8%E5%AE%9F%E7%B8%BE%E3%82%92%E7%B5%B1%E5%90%88%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    学習計画と実績を統合管理する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2%E3%83%BB%E5%AD%A6%E7%BF%92/%E8%81%B7%E5%8B%99%E7%B5%8C%E6%AD%B4%E6%9B%B8%E3%82%92%E5%AF%BE%E8%A9%B1%E7%9A%84%E3%81%AB%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    職務経歴書を対話的に作成する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    07 経営・企画
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            07 経営・企画
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_%E7%B5%8C%E5%96%B6%E3%83%BB%E4%BC%81%E7%94%BB/M%26A%E5%80%99%E8%A3%9C%E4%BC%81%E6%A5%AD%E3%81%AE%E5%88%86%E6%9E%90%E3%82%92%E5%8A%B9%E7%8E%87%E5%8C%96%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    M&amp;A候補企業の分析を効率化する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_%E7%B5%8C%E5%96%B6%E3%83%BB%E4%BC%81%E7%94%BB/Tableau%E3%81%A7KPI%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5%E3%83%9C%E3%83%BC%E3%83%89%E3%82%92%E6%94%B9%E5%96%84%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TableauでKPIダッシュボードを改善する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_%E7%B5%8C%E5%96%B6%E3%83%BB%E4%BC%81%E7%94%BB/%E3%83%96%E3%83%A9%E3%83%B3%E3%83%89%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%81%AE%E6%A7%8B%E7%AF%89%E3%82%92%E8%A6%96%E8%A6%9A%E5%8C%96%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ブランドイメージの構築を視覚化する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_%E7%B5%8C%E5%96%B6%E3%83%BB%E4%BC%81%E7%94%BB/%E5%B8%82%E5%A0%B4%E5%88%86%E6%9E%90%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88%E3%81%AE%E8%B3%AA%E3%82%92%E9%AB%98%E3%82%81%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    市場分析レポートの質を高める
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_%E7%B5%8C%E5%96%B6%E3%83%BB%E4%BC%81%E7%94%BB/%E6%96%B0%E5%95%86%E5%93%81%E3%81%AE%E3%82%A2%E3%82%A4%E3%83%87%E3%82%A2%E7%99%BA%E6%83%B3%E3%82%92%E4%BF%83%E9%80%B2%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    新商品のアイデア発想を促進する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_%E7%B5%8C%E5%96%B6%E3%83%BB%E4%BC%81%E7%94%BB/%E7%B5%8C%E5%96%B6%E6%88%A6%E7%95%A5%E3%81%AE%E6%96%87%E6%9B%B8%E5%8C%96%E3%82%92%E6%94%AF%E6%8F%B4%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    経営戦略の文書化を支援する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_%E7%B5%8C%E5%96%B6%E3%83%BB%E4%BC%81%E7%94%BB/%E9%83%A8%E9%96%80%E6%A8%AA%E6%96%AD%E3%81%AE%E6%9A%97%E9%BB%99%E7%9F%A5%E3%82%92%E4%BC%81%E7%94%BB%E7%AB%8B%E6%A1%88%E3%81%AB%E6%B4%BB%E7%94%A8%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    部門横断の暗黙知を企画立案に活用する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    08 エッセンシャルワーク
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            08 エッセンシャルワーク
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_%E3%82%A8%E3%83%83%E3%82%BB%E3%83%B3%E3%82%B7%E3%83%A3%E3%83%AB%E3%83%AF%E3%83%BC%E3%82%AF/%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC%E3%81%A8%E9%80%A3%E5%8B%95%E3%81%97%E3%81%9F%E4%BB%95%E5%85%A5%E3%82%8C%E3%82%92%E5%AE%9F%E7%8F%BE%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    メニューと連動した仕入れを実現する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_%E3%82%A8%E3%83%83%E3%82%BB%E3%83%B3%E3%82%B7%E3%83%A3%E3%83%AB%E3%83%AF%E3%83%BC%E3%82%AF/%E4%BB%8B%E8%AD%B7%E6%A5%AD%E5%8B%99%E5%AE%9F%E7%B8%BE%E3%81%8B%E3%82%89%E3%82%B7%E3%83%95%E3%83%88%E3%82%92%E6%94%B9%E5%96%84%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    介護業務実績からシフトを改善する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08_%E3%82%A8%E3%83%83%E3%82%BB%E3%83%B3%E3%82%B7%E3%83%A3%E3%83%AB%E3%83%AF%E3%83%BC%E3%82%AF/%E6%96%BD%E8%A8%AD%E3%81%AE%E8%A1%9B%E7%94%9F%E7%AE%A1%E7%90%86%E8%A8%98%E9%8C%B2%E3%82%92%E5%8A%B9%E7%8E%87%E5%8C%96%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    施設の衛生管理記録を効率化する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      アイデア
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="アイデア">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      アーキテクチャ
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      思考プロセス
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="思考プロセス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      対象の活動の価値は何か
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      価値を妨げる課題は何か
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      なぜ課題が発生するのか、仮説推論
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      レポート出力の柔軟性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="jira">JIRAから進捗報告資料を自動生成する</h1>
+<h2 id="_1">アイデア</h2>
+<p>JIRAのチケット情報を基に、プロジェクトの進捗報告資料（予定/実績の比較、現状の課題分析、今後の見込み）を自動生成する。GitHubと連携することで、実装の詳細な進捗も含めた包括的な報告資料を作成する。</p>
+<h3 id="_2">具体例</h3>
+<p>大規模なシステム開発プロジェクトのPMが、週次の定例会議で使用する進捗報告資料を作成する必要がある場面。複数チームの進捗や課題を、JIRAやGitHubの情報から効率的にまとめる。その後、PMが重要な課題について詳細な分析を依頼し、AIと対話しながら最終的な報告資料を作り上げていく。</p>
+<h2 id="_3">アーキテクチャ</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Client</td>
+<td>Claude Desktop App</td>
+<td>進捗報告資料の作成支援</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>Atlassian</td>
+<td>プロジェクトのタスク・課題管理情報の提供</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>GitHub</td>
+<td>実装の詳細な進捗情報の提供</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>Pandoc</td>
+<td>レポートの最終フォーマット変換</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>sequenceDiagram
+    actor PM as プロジェクトマネージャー
+    participant Claude as Claude Desktop
+    participant JIRA as Atlassian(JIRA)
+    participant GH as GitHub
+    participant Pandoc as Pandoc
+
+    PM-&gt;&gt;Claude: 進捗報告書の作成を依頼
+    Claude-&gt;&gt;JIRA: スプリントの状況を確認
+    JIRA--&gt;&gt;Claude: バーンダウン、課題一覧を返却
+
+    Claude-&gt;&gt;GH: コミット履歴、PRの状況を確認
+    GH--&gt;&gt;Claude: 開発進捗情報を返却
+
+    Claude--&gt;&gt;PM: 1次レポート案を提示
+    PM-&gt;&gt;Claude: 特定の課題について詳細確認を依頼
+
+    Claude-&gt;&gt;JIRA: 課題の詳細履歴を確認
+    JIRA--&gt;&gt;Claude: ステータス変更履歴とコメントを返却
+    Claude-&gt;&gt;GH: 関連するPR/コミットを検索
+    GH--&gt;&gt;Claude: 実装の詳細情報を返却
+
+    Claude--&gt;&gt;PM: 詳細分析を提示
+    PM-&gt;&gt;Claude: 報告資料の最終調整を依頼
+
+    Note over Claude: Markdown形式で&lt;br/&gt;最終レポートを構造化
+
+    Claude-&gt;&gt;Pandoc: フォーマット変換&lt;br/&gt;(PDF/Word)
+    Pandoc--&gt;&gt;Claude: 変換済みドキュメント
+
+    Claude--&gt;&gt;PM: 最終版を提示</code></pre>
+<h2 id="_4">思考プロセス</h2>
+<h3 id="_5">対象の活動の価値は何か</h3>
+<ul>
+<li>プロジェクトの現状を客観的なデータに基づいて正確に把握できる</li>
+<li>複数のデータソースから情報を統合し、包括的な進捗報告が可能になる</li>
+<li>定型的な資料作成作業を自動化し、PMが本質的な分析に時間を使える</li>
+</ul>
+<h3 id="_6">価値を妨げる課題は何か</h3>
+<ol>
+<li>システムごとに異なる形式のデータを整理・統合する手間</li>
+<li>データの解釈や課題の優先順位付けに主観が入りやすい</li>
+<li>チーム間の依存関係や影響範囲の分析が複雑</li>
+</ol>
+<h3 id="_7">なぜ課題が発生するのか、仮説推論</h3>
+<ol>
+<li>課題管理とソース管理が異なるシステムで運用されている</li>
+<li>JIRAとGitHubの関連付けが手作業で行われている</li>
+<li>プロジェクトの規模が大きくなるほど、全体像の把握が困難になる</li>
+</ol>
+<h3 id="_8">レポート出力の柔軟性</h3>
+<ul>
+<li>Markdown: 開発チーム向けの共有・レビュー用（特定の課題について開発チームとの議論が必要な場合）</li>
+<li>PDF: 経営層向けの正式報告用（週次定例会議での報告資料として）</li>
+<li>Word(.docx): 編集可能な報告書として共有する場合（他の部門との協働編集が必要な場合）</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 po-shu
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://note.com/poshu_pushuray" target="_blank" rel="noopener" title="note" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h-2V7h2m0 10h-2v-6h2m-1-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/po-shu/mcp-100-ideas" target="_blank" rel="noopener" title="github-pages-repository" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>
